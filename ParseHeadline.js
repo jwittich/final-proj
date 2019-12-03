@@ -1,4 +1,8 @@
-var stopWords = ['i', 'me', 'my', 'myself', 'we', 'us', 'our', 'ours', 'ourselves', 'you', 'your', 'yours',
+module.exports = {
+
+	ParseHeadline: function(headline) {
+
+		var stopWords = ['i', 'me', 'my', 'myself', 'we', 'us', 'our', 'ours', 'ourselves', 'you', 'your', 'yours',
         'yourself', 'yourselves', 'he', 'him', 'his', 'himself', 'she', 'her', 'hers', 'herself', 'it', 'its', 'itself',
         'they', 'them', 'their', 'theirs', 'themselves', 'what', 'which', 'who', 'whom', 'whose', 'this', 'that', 'these',
         'those', 'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does',
@@ -15,10 +19,8 @@ var stopWords = ['i', 'me', 'my', 'myself', 'we', 'us', 'our', 'ours', 'ourselve
         'very', 'say', 'says', 'said', 'shall'];
 
 
-	function ParseHeadline() {
-		let headline = "I'll Cool This, is' a - head'line i'll ill - test";
 		headline = headline.toLowerCase();
-		headline = headline.replace(/[.,'\/#!$%\^&\*;:{}=\_`~()]/g,"");
+		headline = headline.replace(/[.,'\/#!$%\^&\*;:{}="’‘”“\_`~()]/g,"");
 		const headlineNoPunc = headline.replace(/\s{2,}/g," ");
 		let firstPart = headlineNoPunc.split("-");
 		let fullFirst = "";
@@ -43,4 +45,4 @@ var stopWords = ['i', 'me', 'my', 'myself', 'we', 'us', 'our', 'ours', 'ourselve
 		}
 		return finalWords;
 	}
-
+}
