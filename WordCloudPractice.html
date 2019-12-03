@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <title>Word Cloud Practice</title>
 
+
+<script src="https://cdn.anychart.com/releases/8.7.0/js/anychart-core.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.7.0/js/anychart-tag-cloud.min.js"></script>
+
 <style>
       html, body, #container {
       width: 100%;
@@ -11,38 +15,49 @@
       margin: 0;
       padding: 0;
       }
-    </style>    
 
-<script src="https://cdn.anychart.com/releases/8.7.0/js/anychart-core.min.js"></script>
-<script src="https://cdn.anychart.com/releases/8.7.0/js/anychart-tag-cloud.min.js"></script>
+      text {
+      	font-family: american typewriter ! important;
+      	color: black ! important;
+      }
+</style>   
 
 
   </head>
   <body>
-    <div id="container"></div>
+    <div id="container" class='textStyling'></div>
     	<script language='javascript'>
 
-    	anychart.onDocumentReady(function () {
-    	var data = [
-    		{"x": "Mandarin chinese", "value": 1090000000, category: "Sino-Tibetan"},
-    		{"x": "English", "value": 983000000, category: "Indo-European"},
-    		{"x": "Hindustani", "value": 544000000, category: "Indo-European"},
-    		{"x": "Spanish", "value": 527000000, category: "Indo-European"},
-    		{"x": "Arabic", "value": 422000000, category: "Afro-Asiatic"},
-    		{"x": "Malay", "value": 281000000, category: "Austronesian"},
-    		{"x": "Russian", "value": 267000000, category: "Indo-European"},
-    		{"x": "Bengali", "value": 261000000, category: "Indo-European"},
-    		{"x": "Portuguese", "value": 229000000, category: "Indo-European"},
-    		{"x": "French", "value": 229000000, category: "Indo-European"},
-    		{"x": "Hausa", "value": 150000000, category: "Afro-Asiatic"},
-    		{"x": "Punjabi", "value": 148000000, category: "Indo-European"},
-    		{"x": "Japanese", "value": 129000000, category: "Japonic"},
-    		{"x": "German", "value": 129000000, category: "Indo-European"},
-    		{"x": "Persian", "value": 121000000, category: "Indo-European"}
-  		];
+//CREATING WORDCLOUD FROM CHART
 
+    	anychart.onDocumentReady(function () {
+
+
+    	var data = [
+    		{"x": "Mandarin chinese", "value": 10, category: "Sino-Tibetan"},
+    		{"x": "English", "value": 9, category: "Indo-European"},
+    		{"x": "Hindustani", "value": 5, category: "Indo-European"},
+    		{"x": "Spanish", "value": 5, category: "Indo-European"},
+    		{"x": "Arabic", "value": 4, category: "Afro-Asiatic"},
+    		{"x": "Malay", "value": 2, category: "Austronesian"},
+    		{"x": "Russian", "value": 2, category: "Indo-European"},
+    		{"x": "Bengali", "value": 2, category: "Indo-European"},
+    		{"x": "Portuguese", "value": 2, category: "Indo-European"},
+    		{"x": "French", "value": 2, category: "Indo-European"},
+    		{"x": "Hausa", "value": 1, category: "Afro-Asiatic"},
+    		{"x": "Punjabi", "value": 1, category: "Indo-European"},
+    		{"x": "Japanese", "value": 1, category: "Japonic"},
+    		{"x": "German", "value": 1, category: "Indo-European"},
+    		{"x": "Persian", "value": 1, category: "Indo-European"}
+  		];
+  		
   		// create a tag (word) cloud chart
   		var chart = anychart.tagCloud(data);
+
+  		chart.normal().fill("#d3d3d3");
+		chart.hovered().fill("#a9a9a9");
+		chart.selected().fill("#1f66ad");
+		chart.normal().fontWeight(600);
 
   		// set a chart title
   		chart.title('Your News Cloud')
@@ -55,25 +70,52 @@
   		chart.container("container");
 		  		chart.draw();
 		});
+		
 
+//CREATING WORD CLOUD FROM STRINGS
+
+/*
+		anychart.onDocumentReady(function () {
+
+    // create data
+    var data = "French Wine Could Face 100% Tariffs as Trump Confronts France Over Tech Taxes" + "Guest Commentary: Donald Trump has found a way to make civil servants sexy" + "Republican Impeachment Defense Claims Trump’s Ukraine Pressure Was Apolitical" + "Trump’s Possible Policy Shift on the Taliban" + "For Johnson, a Perilous Week Ahead, With the Politics of Terror and Trump" + "Trump Misquotes Ukrainian President in Latest Impeachment Defense - The New York Times" + "Melania Trump Reveals Christmas Décor but Stays Hidden - The New York Times" + "Trump Bars Bloomberg News Journalists From Campaign Events" + "Lisa Page, Ex-F.B.I. Lawyer Whose Texts Criticized Trump, Breaks Silence" + "Trump Says U.S. Will Reinstate Metal Tariffs on Brazil and Australia";
+
+    // create a chart
+    var chart = anychart.tagCloud();
+
+    // set the parsing mode and configure parsing settings
+    chart.data(data, {
+    mode: "by-word",
+    maxItems: 16,
+    ignoreItems: [
+                  "the",
+                  "and",
+                  "he",
+                  "or",
+                  "of",
+                  "in",
+                  "thy",
+                  "a",
+                  "as",
+                  "New",
+                  "York"
+                 ]
+    });
+
+    // set the chart title
+    chart.title("Tag Cloud Chart: Data (Parsing Text)");
+
+    // set the container id
+    chart.container("container");
+
+    // initiate drawing the chart
+    chart.draw();
+	});
+
+*/
     	</script>
   </body>
 </html>
-
-
-
-<!---
-<p id="demo"></p>
-
-<script language='javascript'>
-
-	var str = "This is an amazing sentence.";
-	var words = str.split(" ");
-	document.getElementById("demo").innerHTML = words;
---->
-
-
-
 
 </script>
 </head>
