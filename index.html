@@ -11,6 +11,11 @@
 	font-size: 80pt;
 	text-align: center;
 	font-weight: bold;
+	position:absolute;
+  	top:0;
+  	left:0;
+  	width:100%;
+  	height:25;
 }
 
 .text {
@@ -23,14 +28,24 @@
 }
 
 image{
-	width: 50%;
-  	height: auto;
+	height: 100pt;
+	width: 100pt;
 	text-align: center;
+	position:absolute;
 }
-	
+
 body {
 	background-image: "LandingPageBackground";
 	background-repeat: no-repeat;
+	background-blend-mode: lighten;
+}
+
+.logoCenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  /*position: fixed;*/
 }
 
 </style>
@@ -38,19 +53,19 @@ body {
 
 <body>
 
-<div class = title>
+<header class = title>
 Welcome
-</div>
+</header>
 
 <script type="text/javascript">
 
 	window.onload = function() {
 		$('.title').hide().delay(300).fadeIn(3000);
 		$('.text').hide().delay(300).fadeIn(5000);
+		$('.logoCenter').hide().delay(300).fadeIn(5000);
 	};
 </script>
-
-<img src="NewsCloudLogo.png">
+<img src=https://www.freelogodesign.org/Content/img/logo-samples/flooop.png class=logoCenter>
 
 <footer class = text>
 News Cloud is a revolutionary new way to experience the news. We compile the most popular articles in the US right now to create a visual diagram of today's most important topics. <br> <a href=#> Let's get started </a>
