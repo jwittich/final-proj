@@ -16,6 +16,8 @@
   	left:0;
   	width:100%;
   	height:25;
+  	letter-spacing: .4em;
+  	text-transform: uppercase;
 }
 
 .text {
@@ -34,10 +36,9 @@ image{
 	position:absolute;
 }
 
-body {
-	background-image: "LandingPageBackground";
+.backgroundImage {
+	opacity: .2;
 	background-repeat: no-repeat;
-	background-blend-mode: lighten;
 }
 
 .logoCenter {
@@ -45,13 +46,28 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-  /*position: fixed;*/
+  height: auto;
+}
+
+.background-image {
+  position: absolute;
+  z-index: -1;   
+  width: 100%;
+  height: 100%;
+  background-image: url('https://cdn.britannica.com/25/93825-050-D1300547/collection-newspapers.jpg');
+  background-size: cover;
+  opacity: 0.1;
 }
 
 </style>
 </head>
 
 <body>
+
+<div>
+  <div class="background-image">
+  </div>
+</div>
 
 <header class = title>
 Welcome
@@ -60,7 +76,7 @@ Welcome
 <script type="text/javascript">
 
 	window.onload = function() {
-		$('.title').hide().delay(300).fadeIn(5000);
+		$('.title').hide().delay(300).fadeIn(3000);
 		$('.text').hide().delay(300).fadeIn(5000);
 		$('.logoCenter').hide().delay(300).fadeIn(5000);
 	};
