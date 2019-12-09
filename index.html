@@ -4,21 +4,24 @@
 <meta charset="utf-8">
 <title>News Cloud Landing Page</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 <style>
-.title {
+h1 {
 	font-family: American Typewriter;
 	font-size: 8em;
 	text-align: center;
 	font-weight: bold;
-	position:absolute;
-  	top:0;
-  	left:0;
-  	width:100%;
-  	height:25;
   	letter-spacing: .4em;
   	text-transform: uppercase;
+  	padding: 20px 10px;
 }
+
+.wrap 
+	{
+		max-width: 1000px;
+		display: inline-block;
+	}
 
 .text {
 	text-align: center;
@@ -43,11 +46,11 @@ image{
 }
 
 .logoCenter {
- display: block;
+  display: block;
   margin-left: auto;
   margin-right: auto;
   width: auto;
-  height: auto;
+  height: 100%;
   top: 100%;
 }
 
@@ -71,9 +74,11 @@ image{
   </div>
 </div>
 
-<header class = title>
+
+<h1>
 Welcome
-</header>
+</h1>
+
 
 <script type="text/javascript">
 
@@ -85,9 +90,7 @@ Welcome
 </script>
 
 <div>
-<br>
-<br>
-<img src=NewsCloudLogo.png class=logoCenter>
+<img src=NewsCloudLogo class=logoCenter>
 </div>
 
 <footer class = text>
