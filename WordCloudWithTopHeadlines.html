@@ -36,7 +36,7 @@
 
   //var word = "Obama";
   request.open("GET",
-    "https://newsapi.org/v2/everything?domains=wsj.com,nytimes.com,abc-news,cbs-news,cnbc,cnn,espn,fox-news, msnbc, the-washington-post,&pageSize=100&apiKey=ac41e42a0219400fbbc4a9a52887d40f"
+    "https://newsapi.org/v2/everything?domains=wsj.com,nytimes.com,abc-news,cbs-news,cnbc,cnn,espn,fox-news, msnbc, the-washington-post&language=en&pageSize=100&apiKey=ac41e42a0219400fbbc4a9a52887d40f"
     , true);
 
   //step 3
@@ -62,7 +62,7 @@
         var data;
         console.log("counter");
         //console.log(string_headline);
-        data += string_headline + " ";
+        data += string_headline.replace(/’s /g," ") + " ";
         console.log(data);
 
       }
@@ -76,38 +76,31 @@
     chart.hovered().fill("#a9a9a9");
     chart.selected().fill("#1f66ad");
     chart.normal().fontWeight(600);
+    //chart.mode("rect");
 
     // set the parsing mode and configure parsing settings
     chart.data(data, {
     mode: "by-word",
     maxItems: 16,
-    ignoreItems: [
-                  "the",
-                  "and",
-                  "he",
-                  "or",
-                  "of",
-                  "in",
-                  "thy",
-                  "a",
-                  "as",
-                  "New",
-                  "York",
-                  "journal",
-                  "to",
-                  "are",
-                  "at",
-                  "with",
-                  "on",
-                  "for",
-                  "wall",
-                  "street",
-                  "journal"
-                 ]
+    ignoreItems: ['i', 'me', 'my', 'myself', 'we', 'us', 'our', 'ours', 'ourselves', 'you', 'your', 'yours',
+        'yourself', 'yourselves', 'he', 'him', 'his', 'himself', 'she', 'her', 'hers', 'herself', 'it', 'its', 'itself',
+        'they', 'them', 'their', 'theirs', 'themselves', 'what', 'which', 'who', 'whom', 'whose', 'this', 'that', 'these',
+        'those', 'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does',
+        'did', 'doing', 'will', 'would', 'should', 'can', 'could', 'ought', 'im', 'youre', 'hes', 'shes', 'its',
+        'were', 'theyre', 'ive', 'youve', 'weve', 'theyve', 'id', 'youd', 'hed', 'shed', 'wed',
+        'theyd', 'ill', 'youll', 'hell', 'shell', 'well', 'theyll', 'isnt', 'arent', 'wasnt',
+        'werent', 'hasnt', 'havent', 'hadnt', 'doesnt', 'dont', 'didnt', 'wont', 'wouldnt', 'shant',
+        'shouldnt', 'cant', 'cannot', 'couldnt', 'mustnt', 'lets', 'thats', 'whos', 'whats', 'heres',
+        'theres', 'whens', 'wheres', 'whys', 'hows', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as',
+        'until', 'while', 'of', 'at', 'by', 'for', 'with', 'about', 'against', 'between', 'into', 'through', 'during',
+        'before', 'after', 'above', 'below', 'to', 'from', 'up', 'upon', 'down', 'in', 'out', 'on', 'off', 'over', 'under',
+        'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each',
+        'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too',
+        'very', 'say', 'says', 'said', 'shall', 'wall', 'street', 'journal', "times", "street", "new", "york", 'may']
     });
 
     // set the chart title
-    chart.title("Tag Cloud Chart: Data (Parsing Text)");
+    chart.title("Today's Word Cloud");
 
     // set the container id
     chart.container("container");
