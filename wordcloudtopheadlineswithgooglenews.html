@@ -63,7 +63,7 @@
     // create a chart
     var chart = anychart.tagCloud();
     chart.normal().fill("#d3d3d3");
-    chart.hovered().fill("#a9a9a9");
+    chart.hovered().fill("#334256");
     chart.selected().fill("#ff7f7f");
     chart.normal().fontWeight(600);
     var customColorScale = anychart.scales.ordinalColor();
@@ -178,7 +178,7 @@ chart.colorRange().enabled(true);
     chart.container("container");
     // initiate drawing the chart
     chart.draw();
-    chart.selected().fill("#1f66ad");
+    chart.selected().fill("#334256");
 
 ///code for the opening in new page, with google search
           chart.listen("pointClick", function(e){
