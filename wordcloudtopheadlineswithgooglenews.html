@@ -55,7 +55,7 @@
         var data;
         console.log("counter");
         //console.log(string_headline);
-        data += string_headline + " ";
+        data += string_headline.replace(/’s /g," ") + " ";
         console.log(data);
       }
       anychart.onDocumentReady(function () {
