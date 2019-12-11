@@ -75,6 +75,7 @@
       }
       li {
         margin-bottom: 2%;
+        text-decoration: bold;
       }
  
       .row {
@@ -306,7 +307,7 @@ chart.colorRange().enabled(true);
         const list = document.createElement("ul");
         for (let i = 0; i < result2obj.length; i++) {
           let listItem = document.createElement("li")
-          listItem.innerHTML = result2obj[i]["word"] + " - " + result2obj[i]["clicks"];
+          listItem.innerHTML = result2obj[i]["word"] + result2obj[i]["clicks"];
           list.appendChild(listItem);
         }
         listcontainer.appendChild(list);
