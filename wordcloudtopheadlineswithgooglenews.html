@@ -20,12 +20,7 @@
       	color: black ! important;
             text-transform: capitalize;
       }
-      p{
-        font-family: american typewriter;
-        font-size: 20px;
-        text-align: center;
-        color:red;
-      }
+      
       .title {
         font-family: american typewriter;
         font-style: bold;
@@ -64,7 +59,7 @@
       
       .logo {
         text-align: center;
-        height: 10%;
+        height: 5%;
         width: auto;
       }
       
@@ -74,13 +69,13 @@
 
   </head>
   <body onload="getTopArticles()">
+     <link rel="icon" type="image/png" href="NewsCloudLogo.png"/>
      <div class=title> Your Newscloud  </div>
-     <p id="date"></p>
     <div id="container" class='textStyling'></div>
       <div class="center">
-    <button class='homeButton' onclick="window.location.href='index.html'">Home</button>
-    </div>
-    <img src="NewsCloudLogo.png" class="logo">
+      <button class='homeButton' onclick="window.location.href='index.html'">Home</button>
+      </div>
+     <img src="NewsCloudLogo.png" class="logo">
     	<script language='javascript'>
       function getTopArticles() {
   //step 1: request object created
@@ -227,13 +222,8 @@ chart.colorRange().enabled(true);
                   'could'
                  ]
     });
-     // set the chart date
-    n =  new Date();
-    y = n.getFullYear();
-    m = n.getMonth() + 1;
-    d = n.getDate();
-    document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
-            
+    // set the chart title
+    chart.title("Your NewsCloud");
     // set the container id
     chart.container("container");
     // initiate drawing the chart
