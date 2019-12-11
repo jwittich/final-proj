@@ -111,13 +111,12 @@
      //creating baskets for frequency of keywords
     var customColorScale = anychart.scales.ordinalColor();
 customColorScale.ranges([
-    {equals: 1},
     {from: 2, to: 3},
     {from: 4, to: 5},
     {greater: 6}
 ]);
  //scale for baskets created
-customColorScale.colors(["#ffbaba", "#ff7b7b", "#ff5252", "#ff0000"]);
+customColorScale.colors(["#ffbaba", "#ff7b7b", "#ff5252"]);
 
 // set the color scale as the color scale of the chart
 chart.colorScale(customColorScale);
@@ -187,30 +186,30 @@ chart.colorRange().enabled(true);
                   "be",
                   "know",
                   "have",
-"in",
-'to',
-'for',
-'with',
-'on',
-'at',
-'from',
-'by',
-'about',
-'as',
-'into',
-'like',
-'through',
-'after',
-'over',
-'between',
-'out',
-'against',
-'during',
-'without',
-'before',
-'under',
-'around',
-'among'
+                  "in",
+                  'to',
+                  'for',
+                  'with',
+                  'on',
+                  'at',
+                  'from',
+                  'by',
+                  'about',
+                  'as',
+                  'into',
+                  'like',
+                  'through',
+                  'after',
+                  'over',
+                  'between',
+                  'out',
+                  'against',
+                  'during',
+                  'without',
+                  'before',
+                  'under',
+                  'around',
+                  'among'
                  ]
     });
     // set the chart title
