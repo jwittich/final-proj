@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Word Cloud Practice</title>
 
-<link rel="icon" type="image/png" href="NewsCloudLogo.png"/>
+
 <script src="https://cdn.anychart.com/releases/8.7.0/js/anychart-core.min.js"></script>
 <script src="https://cdn.anychart.com/releases/8.7.0/js/anychart-tag-cloud.min.js"></script>
 
@@ -20,24 +20,13 @@
       	color: black ! important;
             text-transform: capitalize;
       }
-        p{
-        font-family: american typewriter;
-        font-size: 20px;
-        text-align: center;
-        color:red;
-      }
       
       .title {
         font-family: american typewriter;
         font-style: bold;
         font-size: 80px;
         text-align: center;
-             }
-       h3 {
-        font-family: american typewriter;
-        font-size: 23px; 
-          }
-     
+      }
       .homeButton {
         font-family: american typewriter;
         font-style: bold;
@@ -67,9 +56,6 @@
       .topWords {
         width: 30%;
         float: right;
-        font-family: american typewriter;
-        font-size: 20px;
-        
       }
       ul {
         list-style-type: none;
@@ -77,21 +63,17 @@
       li {
         margin-bottom: 2%;
       }
-
-     
+      h3 {
+        text-align: center;
+      }
       .row {
         width: 100%;
-        height: 80%;
+        height: 100%;
         text-align: center;
       }
       #container {
         width: 70%;
         float: left;
-      }
-      .logo {
-        text-align: center;
-        height: 20%;
-        width: auto;
       }
       
       
@@ -101,10 +83,8 @@
   </head>
   <body onload="getTopArticles()">
      <div class=title> Your Newscloud  </div>
-     <p id="date"></p>
-     <div class="row">
+     <div class="row" id="row">
     <div id="container" class='textStyling'></div>
-    <img src="NewsCloudLogo.png" class="logo">
     	<script language='javascript'>
       function getTopArticles() {
   //step 1: request object created
@@ -243,17 +223,11 @@ chart.colorRange().enabled(true);
                   'around',
                   'among',
                   'we',
-                  'could',
-                  'takes',
-                  'most'
+                  'could'
                  ]
     });
-    // set the chart date
-    n =  new Date();
-    y = n.getFullYear();
-    m = n.getMonth() + 1;
-    d = n.getDate();
-    document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+    // set the chart title
+    chart.title("Your NewsCloud");
     // set the container id
     chart.container("container");
     // initiate drawing the chart
@@ -281,35 +255,38 @@ chart.colorRange().enabled(true);
 </script>
 
 <script>
-  let result;
-  request = new XMLHttpRequest();
-    request.open("GET", "https://agile-escarpment-45748.herokuapp.com", true);
-    request.onreadystatechange = function() {
-      if (request.readyState == 3 && request.status == 200) {
-        result = request.responseText;
+  let result2;
+  request3 = new XMLHttpRequest();
+    request3.open("GET", "https://agile-escarpment-45748.herokuapp.com/?num=5", true);
+    request3.onreadystatechange = function() {
+      if (request3.readyState == 3 && request3.status == 200) {
+        console.log("loading");
       }
-      else if (request.readyState == 4 && request.status !=200) {
-        result = request.responseText;
+      else if (request3.readyState == 4 && request3.status !=200) {
+        result2 = request3.responseText;
+        console.log("here");
       }
-      else if (request.readyState == 4 && request.status == 200) {
-        console.log(result);
+      else if (request3.readyState == 4 && request3.status == 200) {
+        result2 = request3.responseText;
+        console.log(result2);
+        const result2obj = JSON.parse(result2);
+        let listcontainer = document.createElement("div");
+        let listheader = document.createElement("h3");
+        listheader.innerHTML = "Most Clicked Words";
+        listcontainer.appendChild(listheader);
+        listcontainer.classList.add("topWords");
+        const list = document.createElement("ul");
+        for (let i = 0; i < result2obj.length; i++) {
+          let listItem = document.createElement("li")
+          listItem.innerHTML = result2obj[i]["word"] + " - " + result2obj[i]["clicks"];
+          list.appendChild(listItem);
         }
+        listcontainer.appendChild(list);
+        document.getElementById("row").appendChild(listcontainer);
+      }
     }
-    request.send();
+    request3.send();
 </script>
-<div class="topWords" id="topWords">
-    <h3>Most Clicked Words</h3>
-  <script>
-    result = ["hello", "this", "is", "a", "list"];
-    const list = document.createElement("ul");
-    for (let i = 0; i < result.length; i++) {
-      let listItem = document.createElement("li")
-      listItem.innerHTML = result[i];
-      list.appendChild(listItem);
-    }
-    document.getElementById('topWords').appendChild(list);
-  </script>
-  </div>
 </div>
 <div class="center">
     <button class='homeButton' onclick="window.location.href='index.html'">Home</button>
