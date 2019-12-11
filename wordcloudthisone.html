@@ -20,6 +20,12 @@
       	color: black ! important;
             text-transform: capitalize;
       }
+        p{
+        font-family: american typewriter;
+        font-size: 20px;
+        text-align: center;
+        color:red;
+      }
       
       .title {
         font-family: american typewriter;
@@ -88,6 +94,7 @@
   </head>
   <body onload="getTopArticles()">
      <div class=title> Your Newscloud  </div>
+     <p id="date"></p>
      <div class="row">
     <div id="container" class='textStyling'></div>
     <img src="NewsCloudLogo.png" class="logo">
@@ -229,11 +236,17 @@ chart.colorRange().enabled(true);
                   'around',
                   'among',
                   'we',
-                  'could'
+                  'could',
+                  'takes',
+                  'most'
                  ]
     });
-    // set the chart title
-    chart.title("Your NewsCloud");
+    // set the chart date
+    n =  new Date();
+    y = n.getFullYear();
+    m = n.getMonth() + 1;
+    d = n.getDate();
+    document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
     // set the container id
     chart.container("container");
     // initiate drawing the chart
