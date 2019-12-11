@@ -20,12 +20,54 @@
       	color: black ! important;
             text-transform: capitalize;
       }
+      
+      .title {
+        font-family: american typewriter;
+        font-style: bold;
+        font-size: 80px;
+        text-align: center;
+      }
+
+      .homeButton {
+        font-family: american typewriter;
+        font-style: bold;
+        background-color: grey;
+        border: none;
+        color: black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+
+      .background-image {
+      position: absolute;
+      z-index: -1;   
+      width: 100%;
+      height: 100%;
+      background-image: url('https://cdn.britannica.com/25/93825-050-D1300547/collection-newspapers.jpg');
+      background-size: cover;
+      opacity: 0.1;
+      }
+
+      .center {
+        text-align: center;
+      }
+      
+      
 </style>
 
 
   </head>
   <body onload="getTopArticles()">
+     <div class=title> Your Newscloud  </div>
     <div id="container" class='textStyling'></div>
+      <div class="center">
+    <button class='homeButton'>Home</button>
+    </div>
     	<script language='javascript'>
       function getTopArticles() {
   //step 1: request object created
