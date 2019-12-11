@@ -75,13 +75,25 @@
         width: 70%;
         float: left;
       }
-      
+      .background-image {
+      position: absolute;
+      z-index: -1;   
+      width: 100%;
+      height: 100%;
+      background-image: url('https://cdn.britannica.com/25/93825-050-D1300547/collection-newspapers.jpg');
+      background-size: cover;
+      opacity: 0.1;
+      }
       
 </style>
 
 
   </head>
   <body onload="getTopArticles()">
+     <div>
+     <div class="background-image">
+     </div>
+     </div>
      <div class=title> Your Newscloud  </div>
      <div class="row" id="row">
     <div id="container" class='textStyling'></div>
