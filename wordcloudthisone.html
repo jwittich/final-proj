@@ -264,12 +264,11 @@ chart.colorRange().enabled(true);
     chart.draw();
     chart.selected().fill("#334256");
             
-//opening in new page, with google search
+//opening in new page, with google search and sending query to server to update DB
           chart.listen("pointClick", function(e){
           request2 = new XMLHttpRequest();
           request2.open("POST", "https://agile-escarpment-45748.herokuapp.com/?word=" + e.point.get("x"), true);
           request2.send(e.point.get("x"));
-          console.log(e.point.get("x"));
           var url = "https://news.google.com/search?q=" + e.point.get("x");
           window.open(url, "_blank");
           });
@@ -286,16 +285,16 @@ chart.colorRange().enabled(true);
 </script>
 
 <script>
+  // Retrving top clicks from server and DB
   let result2;
   request3 = new XMLHttpRequest();
     request3.open("GET", "https://agile-escarpment-45748.herokuapp.com/?num=5", true);
     request3.onreadystatechange = function() {
       if (request3.readyState == 3 && request3.status == 200) {
-        console.log("loading");
+        //Error occured
       }
       else if (request3.readyState == 4 && request3.status !=200) {
         result2 = request3.responseText;
-        console.log("here");
       }
       else if (request3.readyState == 4 && request3.status == 200) {
         result2 = request3.responseText;
