@@ -114,8 +114,7 @@
       function getTopArticles() {
   //step 1: request object created
   request = new XMLHttpRequest();
-  //step 2
-  //var word = "Obama";
+  //step 2: open API
   request.open("GET",
     "https://newsapi.org/v2/everything?domains=wsj.com,nytimes.com,abc-news,cbs-news,cnbc,cnn,espn,fox-news, msnbc, the-washington-post,&pageSize=100&apiKey=ac41e42a0219400fbbc4a9a52887d40f"
     , true);
@@ -140,31 +139,31 @@
         data += string_headline.replace(/’s /g," ") + " ";
       }
       anychart.onDocumentReady(function () {
-    // create data
+
     // create a chart
     var chart = anychart.tagCloud();
     chart.normal().fill("#d3d3d3");
     chart.hovered().fill("#ff0000");
     chart.selected().fill("#ff0000");
     chart.normal().fontWeight(600);
-     //creating baskets for frequency of keywords
+    //creating categories for frequencies of keywords
     var customColorScale = anychart.scales.ordinalColor();
 customColorScale.ranges([
     {from: 2, to: 3},
     {from: 4, to: 5},
     {greater: 6}
 ]);
- //scale for baskets created
+ //scale for categories created
 customColorScale.colors(["#ffbaba", "#ff7b7b", "#ff5252"]);
 // set the color scale as the color scale of the chart
 chart.colorScale(customColorScale);
 chart.colorRange().enabled(true);
-    // set the parsing mode and configure parsing settings
+    // set parsing mode and parsing settings
     chart.data(data, {
     mode: "by-word",
     //set how many words to include in wordcloud
     maxItems: 15,
-   //set words to disinclude from cloud
+   //set words to exclude from cloud
     ignoreItems: [
                   "the",
                   "and",
@@ -264,7 +263,8 @@ chart.colorRange().enabled(true);
     // initiate drawing the chart
     chart.draw();
     chart.selected().fill("#334256");
-///code for the opening in new page, with google search
+            
+//opening in new page, with google search
           chart.listen("pointClick", function(e){
           request2 = new XMLHttpRequest();
           request2.open("POST", "https://agile-escarpment-45748.herokuapp.com/?word=" + e.point.get("x"), true);
